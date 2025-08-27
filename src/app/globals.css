@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* fonts */
+
+.font-barlow{
+  font-family: var(--font-barlow), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-bellefair{
+  font-family: var(--font-bellefair), sans- serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* text presets */
+
+.text-preset-1 {
+  font-family: var(--font-bellefair), serif;
+  @apply text-[80px] lg:text-[144px] font-normal leading-normal tracking-normal;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.text-preset-2 {
+  font-family: var(--font-bellefair), serif;
+  @apply text-[56px] md:text-[80px] lg:text-[96px] font-normal leading-normal tracking-[0px];
 }
+
+.text-preset-3 {
+  font-family: var(--font-bellefair), serif;
+  @apply text-[24px] md:text-[40px] lg:text-[56px] font-normal leading-normal tracking-normal;
+}
+
+.text-preset-4 {
+  font-family: var(--font-bellefair), serif;
+  @apply text-[18px] md:text-[24px] lg:text-[32px] font-normal leading-normal tracking-normal;
+}
+
+.text-preset-5 {
+  font-family: var(--font-barlow), sans-serif;
+  @apply md:text-[20px] lg:text-[28px] font-normal leading-normal md:tracking-[15%] lg:tracking-[4px];
+}
+
+.text-preset-6 {
+  font-family: var(--font-bellefair), serif;
+  @apply text-[16px] lg:text-[28px] font-normal leading-normal tracking-[15%] lg:tracking-normal;
+}
+
+.text-preset-7 {
+  font-family: var(--font-barlow), sans-serif;
+  @apply text-[14px] font-normal leading-normal tracking-[2px];
+}
+
+.text-preset-8 {
+  font-family: var(--font-barlow), sans-serif;
+  @apply text-[14px] lg:text-[16px] font-normal leading-normal tracking-[15%] lg:tracking-[2px];
+}
+
+.text-preset-8-bold {
+  font-family: var(--font-barlow), sans-serif;
+  @apply text-[14px] lg:text-[16px] font-bold leading-normal tracking-[15%] lg:tracking-[2.7px];
+}
+
+.text-preset-9 {
+  font-family: var(--font-bellefair), serif;
+  @apply text-[15px] md:text-[16px] lg:text-[18px] font-normal leading-[1.8] tracking-normal;
+}
+
+/* colors */
+
+.blue-900{
+  @apply bg-[#0B0D17]
+}
+
+.blue-300{
+  @apply bg-[#D0D6F9]
+}
+
+/* background component styles */
+
+.background {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background .content {
+  color: white;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.background .content h1 {
+  font-family: var(--font-bellefair), serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.background .content p {
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
