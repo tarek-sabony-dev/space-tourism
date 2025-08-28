@@ -148,7 +148,7 @@ export default function NavBar() {
 
               {/* Footer */}
               <div className="mt-auto pt-8 border-t border-white/20">
-                <p className="text-white/60 text-sm">
+                <p className="text-white/60 text-preset-8">
                   Space Tourism © 2024
                 </p>
               </div>
