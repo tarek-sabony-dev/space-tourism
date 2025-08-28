@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -61,8 +64,8 @@ export default function NavBar() {
 
   return (
     <>
-      {/* Top bar with logo and hamburger */}
-      <div className="w-full h-fit flex items-center justify-between p-5 ">
+      {/* Top bar with logo and hamburger (mobile only) */}
+      <div className="w-full h-fit flex items-center justify-between p-5 md:hidden ">
         {/* Logo */}
         <a href="/" aria-label="Home" >
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +85,43 @@ export default function NavBar() {
           </svg>
         </button>
       </div>
+
+      {/* Desktop/Tablet horizontal navbar */}
+      <header className="hidden md:flex w-full items-center justify-between pt-6 lg:pt-10">
+        {/* Left: logo */}
+        <a href="/" aria-label="Home" className="pl-6 lg:pl-12">
+          <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM20 40C20 40 20 20 40 20C20 20 20 0 20 0C20 0 20 20 0 20C19.648 20.1428 20 40 20 40Z" fill="white"/>
+          </svg>
+        </a>
+
+        {/* Right: nav bar */}
+        <nav className="">
+          <ul className="backdrop-blur-md bg-white/10 md:px-8 lg:px-12 md:py-6 flex md:gap-8 lg:gap-12 text-white uppercase tracking-[0.15em]">
+            {menuItems.map((item, index) => {
+              const isActive = pathname === item.href;
+              return (
+                <li key={`desk-${item.name}`} className="relative">
+                  <Link
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`relative pb-3 md:pb-6 flex items-center gap-2 text-preset-8 ${
+                      isActive ? "text-white" : "text-white/70 hover:text-white"
+                    } after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-white after:transition-opacity after:duration-200 ${
+                      isActive ? "after:opacity-100" : "after:opacity-0 hover:after:opacity-50"
+                    }`}
+                  >
+                    <span className="text-preset-8-bold">
+                      {String(index).padStart(2, '0')}
+                    </span>
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </header>
 
       {/* Overlay */}
       <AnimatePresence>
@@ -131,16 +171,29 @@ export default function NavBar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <a
-                        href={item.href}
-                        onClick={closeMenu}
-                        className="text-preset-8 text-white flex items-center group"
-                      >
-                        <span className="mr-4 text-preset-8-bold ">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        {item.name}
-                      </a>
+                      {(() => {
+                        const isActive = pathname === item.href;
+                        return (
+                          <Link
+                            href={item.href}
+                            onClick={closeMenu}
+                            aria-current={isActive ? "page" : undefined}
+                            className={`text-preset-8 flex items-center group ${
+                              isActive
+                                ? "text-white"
+                                : "text-white/70 hover:text-white"
+                            }`}
+                          >
+                            <span className="mr-4 text-preset-8-bold ">
+                              {String(index).padStart(2, '0')}
+                            </span>
+                            {item.name}
+                            {isActive && (
+                              <span className="ml-4 inline-block w-1 h-4 rounded-full bg-white" />
+                            )}
+                          </Link>
+                        );
+                      })()}
                     </motion.li>
                   ))}
                 </ul>
