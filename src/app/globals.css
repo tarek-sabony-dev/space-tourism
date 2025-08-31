@@ -29,7 +29,7 @@
 
 .text-preset-4 {
   font-family: var(--font-bellefair), serif;
-  @apply text-[18px] md:text-[24px] lg:text-[32px] font-normal leading-normal tracking-normal;
+  @apply text-[18px] md:text-[24px] lg:text-[32px] font-normal leading-normal;
 }
 
 .text-preset-5 {
@@ -58,7 +58,7 @@
 }
 
 .text-preset-9 {
-  font-family: var(--font-bellefair), serif;
+  font-family: var(--font-barlow), serif;
   @apply text-[15px] md:text-[16px] lg:text-[18px] font-normal leading-[1.8] tracking-normal;
 }
 

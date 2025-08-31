@@ -5,7 +5,7 @@ export default function Destination() {
   return (
     <>
       <div>
-        <Background imageUrl={"background-images/destination-background.png"}/>
+        <Background imageUrl={"background-images/technology-background.png"}/>
         <NavBar />
       </div>
     </>
