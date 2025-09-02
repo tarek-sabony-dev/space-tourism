@@ -4,6 +4,7 @@ import Background from "@/components/background";
 import NavBar from "@/components/nav-bar";
 import PlanetModel from "@/components/planet-model";
 import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Destination() {
   const destinations = [
@@ -35,7 +36,18 @@ export default function Destination() {
             </div>
             <div className="w-full h-full flex flex-col lg:flex-row justify-center items-center gap-8">
               <div className="w-full h-[250px] md:h-[300px] lg:h-[500px] pt-6">
-                <PlanetModel texturePath={`/planets-textures/${selectedDestination.name}.png`}/>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`planet-${selectedName}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="w-full h-full"
+                  >
+                    <PlanetModel texturePath={`/planets-textures/${selectedDestination.name}.png`}/>
+                  </motion.div>
+                </AnimatePresence>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                 <div className="w-full h-fit flex justify-center items-center md:px-24 lg:p-36">
@@ -62,31 +74,42 @@ export default function Destination() {
                         })}
                       </ul>
                     </nav>
-                    <div className="w-full h-fit text-preset-2 text-white text-center lg:text-start">
-                      {selectedDestination.name.toUpperCase()}
-                    </div>
-                    <div className="w-full h-fit text-preset-9 text-[#D0D6F9] text-center lg:text-start">
-                      {selectedDestination.description}
-                    </div>
-                    <div className="w-full h-[1px] bg-white/25"/>
-                    <div className="w-full h-fit flex flex-col md:flex-row justify-center items-center gap-6">
-                      <div className="w-full h-fit flex flex-col justify-center items-center lg:items-start gap-3">
-                        <div className="text-preset-7 text-[#D0D6F9] uppercase">
-                          AVG. DISTANCE
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={`content-${selectedName}`}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="flex flex-col gap-6"
+                      >
+                        <div className="w-full h-fit text-preset-2 text-white text-center lg:text-start">
+                          {selectedDestination.name.toUpperCase()}
                         </div>
-                        <div className="text-preset-6 text-white uppercase">
-                          {selectedDestination.distance}
+                        <div className="w-full h-fit text-preset-9 text-[#D0D6F9] text-center lg:text-start">
+                          {selectedDestination.description}
                         </div>
-                      </div>
-                      <div className="w-full h-fit flex flex-col justify-center items-center lg:items-start gap-3">
-                        <div className="text-preset-7 text-[#D0D6F9] uppercase">
-                          Est. travel time
+                        <div className="w-full h-[1px] bg-white/25"/>
+                        <div className="w-full h-fit flex flex-col md:flex-row justify-center items-center gap-6">
+                          <div className="w-full h-fit flex flex-col justify-center items-center lg:items-start gap-3">
+                            <div className="text-preset-7 text-[#D0D6F9] uppercase">
+                              AVG. DISTANCE
+                            </div>
+                            <div className="text-preset-6 text-white uppercase">
+                              {selectedDestination.distance}
+                            </div>
+                          </div>
+                          <div className="w-full h-fit flex flex-col justify-center items-center lg:items-start gap-3">
+                            <div className="text-preset-7 text-[#D0D6F9] uppercase">
+                              Est. travel time
+                            </div>
+                            <div className="text-preset-6 text-white uppercase">
+                              {selectedDestination.travelTime}
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-preset-6 text-white uppercase">
-                          {selectedDestination.travelTime}
-                        </div>
-                      </div>
-                    </div>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
