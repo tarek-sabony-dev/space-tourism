@@ -77,6 +77,8 @@ export default function NavBar() {
           onClick={toggleMenu}
           className="p-2 rounded-lg hover:bg-white/10 transition-colors"
           aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect y="0.5" width="24" height="3" fill="#FFFFFF"/>
@@ -96,7 +98,7 @@ export default function NavBar() {
         </a>
 
         {/* Right: nav bar */}
-        <nav className="">
+        <nav className="" aria-label="Primary">
           <ul className="backdrop-blur-md bg-white/10 md:px-8 lg:px-12 md:py-6 flex md:gap-8 lg:gap-12 text-white uppercase tracking-[0.15em]">
             {menuItems.map((item, index) => {
               const isActive = pathname === item.href;
@@ -145,6 +147,9 @@ export default function NavBar() {
             initial="closed"
             animate="open"
             exit="closed"
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
             className="fixed top-0 right-0 h-full w-80 bg-white/10 backdrop-blur-md border-l border-white/20 z-50"
           >
             <div className="flex flex-col h-full p-5 ">
@@ -162,7 +167,7 @@ export default function NavBar() {
               </div>
 
               {/* Navigation Links */}
-              <nav className="flex-1">
+              <nav className="flex-1" aria-label="Primary">
                 <ul className="space-y-6">
                   {menuItems.map((item, index) => (
                     <motion.li

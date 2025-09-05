@@ -115,6 +115,8 @@ export default function Technology() {
                       src={selectedTechnology.image}
                       alt={selectedTechnology.title}
                       className="block w-full h-auto max-w-[720px] object-cover select-none pointer-events-none"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </motion.div>
                 </AnimatePresence>
