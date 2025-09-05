@@ -21,12 +21,12 @@ export default function Destination() {
 
   return (
     <>
-      <div className="">
+      <div className="lg:overflow-hidden lg:h-screen">
         <Background imageUrl={"background-images/destination-background.png"}/>
         <NavBar />
         <div className="w-full h-full flex-col justify-center items-center gap-2 p-6 md:p-10 lg:p-12" >
           <div className="w-full h-full flex-col justify-center items-center gap-6 " >
-            <div className="w-fit h-fit flex justify-center items-center gap-6">
+            <div className="w-full h-fit flex justify-center lg:justify-start items-center gap-6">
               <div className="text-preset-5 text-white opacity-25">
                 01
               </div>
@@ -50,7 +50,7 @@ export default function Destination() {
                 </AnimatePresence>
               </div>
               <div className="w-full h-full flex justify-center items-center">
-                <div className="w-full h-fit flex justify-center items-center md:px-24 lg:p-36">
+                <div className="w-full h-fit flex justify-center items-center md:px-24 lg:p-28">
                   <div className="w-full h-fit flex flex-col justify-center items-start gap-4">
                     <nav className="w-full h-fit ">
                       <ul className="w-full h-fit flex justify-center items-center lg:justify-start gap-8 text-white uppercase">
