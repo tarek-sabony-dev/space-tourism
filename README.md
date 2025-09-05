@@ -1,37 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Space Tourism
+
+Interactive multi-page Space Tourism website built with Next.js App Router. Explore destinations, meet the crew, and discover the technology behind space travel.
+
+### Features
+- **Responsive design**: Mobile-first, optimized layouts for all screen sizes
+- **Animated transitions**: Smooth page and content transitions with Framer Motion
+- **Accessible navigation**: Semantic landmarks, keyboard-ready mobile menu, ARIA attributes
+- **Optimized assets**: Preloaded fonts, lazy-loaded imagery, static assets served from `public/`
+
+### Tech Stack
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **3D**: Three.js (via `@react-three/fiber` and `@react-three/drei`)
+- **Fonts**: Google Fonts via `next/font` (Bellefair, Barlow)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ and npm
 
+### Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
+```bash
+npm run dev
+# visit http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Lint
+```bash
+npm run lint
+```
 
-## Learn More
+## Project Structure
+```text
+src/
+  app/
+    page.jsx                 # Home page
+    layout.jsx               # Root layout + metadata
+    destination/page.jsx     # Destination page
+    crew/page.jsx            # Crew page
+    technology/page.jsx      # Technology page
+  components/
+    background.jsx           # Fullscreen background image
+    nav-bar.jsx              # Responsive navigation bar
+    explore-button.jsx       # CTA on the home page
+    planet-model.jsx         # 3D/visual component (if used)
+public/
+  background-images/         # Page backgrounds
+  crew/                      # Crew imagery
+  technology/                # Technology imagery
+  planets-textures/          # Destination textures
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Accessibility
+- Labeled navigation (`aria-label`, `aria-current`)
+- Mobile menu with `aria-expanded`, `aria-controls`, and modal semantics
+- Decorative backgrounds isolated from content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
+- Any Node-compatible platform works (e.g., Vercel). After `npm run build`, run `npm run start`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Credits
+- Design inspiration: Space Tourism challenge (Frontend Mentor-style)
+- Images: Stored locally in `public/` for demo purposes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# space-tourism
+## License
+This project is for learning and demonstration purposes.
