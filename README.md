@@ -55,7 +55,7 @@ src/
     background.jsx           # Fullscreen background image
     nav-bar.jsx              # Responsive navigation bar
     explore-button.jsx       # CTA on the home page
-    planet-model.jsx         # 3D/visual component (if used)
+    planet-model.jsx         # 3D/visual component
 public/
   background-images/         # Page backgrounds
   crew/                      # Crew imagery
